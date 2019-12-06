@@ -181,6 +181,7 @@ export default class Regform extends Component {
     }
 
     handleStepChange = (name, value) => {
+        this.props.trackStartEdit();
         let errors = null;
         if (name === 'password') {
             const checkPassword = this.props.validateParams({
@@ -283,7 +284,7 @@ export default class Regform extends Component {
                                         this.setState({
                                             phone_country_prefix: `${countryData.dialCode}`,
                                             tel: value.replace(/[^0-9]/g, '')
-                                        })
+                                        }, () => this.props.trackVideoPlay())
                                     }
                                 }}
                                 value = {this.state.tel}
